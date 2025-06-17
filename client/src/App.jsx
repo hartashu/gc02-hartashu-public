@@ -5,12 +5,14 @@ import "./App.css";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
+import TableCuisines from "./components/TableCuisines";
 
 function App() {
   return (
     <>
       {/* <Login /> */}
-      <Register />
+      {/* <Register /> */}
+      {/* <TableCuisines /> */}
     </>
   );
 }
