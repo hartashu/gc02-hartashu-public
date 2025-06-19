@@ -18,12 +18,12 @@ function App() {
     <>
       {/* <HomePage /> */}
       {/* <CuisineDetailPage /> */}
-      <LoginPage />
+      {/* <LoginPage /> */}
       {/* <CuisinesPage /> */}
       {/* <AddCuisinePage /> */}
       {/* <EditCuisinePage /> */}
       {/* <CategoriesPage /> */}
-      {/* <RegisterPage /> */}
+      <RegisterPage />
     </>
   );
 }

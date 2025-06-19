@@ -1,71 +1,98 @@
-const FormAddOrEdit = () => {
+const FormAddOrEdit = ({
+  cuisine,
+  categories,
+  fnOnChangeInputValue,
+  fnOnSubmitFormAddOrEdit,
+  editedCuisine,
+}) => {
   return (
     <>
-      <form action="" method="post" className="space-y-4">
+      <form
+        action=""
+        method="post"
+        className="space-y-4"
+        onSubmit={fnOnSubmitFormAddOrEdit}
+      >
+        {/* name */}
         <div>
-          <label for="" className="block font-medium">
+          <label htmlFor="name" className="block font-medium">
             Name:
           </label>
           <input
             type="text"
-            name=""
-            id=""
+            name="name"
+            id="name"
             placeholder="Cuisine name"
             className="w-full border border-gray-300 rounded px-3 py-2"
+            value={cuisine.name}
+            onChange={fnOnChangeInputValue}
           />
         </div>
-
-        {/* <!-- Category bakal ambil dari endpoint category biar dinamis --> */}
         {/* <!-- authorId auto kirim id yg sedang login??? atau nanti ambilnya dari access_token? --> */}
+        {/* category */}
         <div>
-          <label for="" className="block font-medium">
+          <label htmlFor="categoryId" className="block font-medium">
             Category:
           </label>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Cuisine"
+          <select
+            name="categoryId"
+            id="categoryId"
             className="w-full border border-gray-300 rounded px-3 py-2"
-          />
+            onChange={fnOnChangeInputValue}
+          >
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
         </div>
 
+        {/* description */}
         <div>
-          <label for="" className="block font-medium">
+          <label htmlFor="description" className="block font-medium">
             Description:
           </label>
           <input
             type="text"
-            name=""
-            id=""
+            name="description"
+            id="description"
             placeholder="Cuisine description"
             className="w-full border border-gray-300 rounded px-3 py-2"
+            value={cuisine.description}
+            onChange={fnOnChangeInputValue}
           />
         </div>
 
+        {/* price */}
         <div>
-          <label for="" className="block font-medium">
+          <label htmlFor="price" className="block font-medium">
             Price:
           </label>
           <input
             type="text"
-            name=""
-            id=""
+            name="price"
+            id="price"
             placeholder="Cuisine price"
             className="w-full border border-gray-300 rounded px-3 py-2"
+            value={cuisine.price}
+            onChange={fnOnChangeInputValue}
           />
         </div>
 
+        {/* image url */}
         <div>
-          <label for="" className="block font-medium">
+          <label htmlFor="imgUrl" className="block font-medium">
             Image URL:
           </label>
           <input
             type="text"
-            name=""
-            id=""
-            placeholder="URL image"
+            name="imgUrl"
+            id="imgUrl"
+            placeholder="Image URL"
             className="w-full border border-gray-300 rounded px-3 py-2"
+            value={cuisine.imgUrl}
+            onChange={fnOnChangeInputValue}
           />
         </div>
 

@@ -10,19 +10,29 @@ const LoginPage = () => {
   const fnOnSubmitFormLogin = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post("http://localhost:3000/login", {
-        username: credentials.username,
-        password: credentials.password,
-      });
-      console.log(response);
+      const { data } = await axios.post(
+        "http://localhost:3000/login",
+        {
+          username: credentials.username,
+          password: credentials.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      // console.log(data);
+      localStorage.setItem("access_token", data.access_token);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    console.log(credentials);
-  }, [credentials]);
+  // useEffect(() => {
+  //   console.log(credentials);
+  // }, [credentials]);
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">

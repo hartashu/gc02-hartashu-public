@@ -1,4 +1,54 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const RegisterPage = () => {
+  const token = localStorage.getItem("access_token");
+
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    address: "",
+  });
+
+  const fnOnChangeInputValue = (event) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const fnOnSubmitFormRegister = async (event) => {
+    try {
+      event.preventDefault();
+
+      const { data } = await axios.post(
+        "http://localhost:3000/add-user",
+        {
+          username: "",
+          email: "",
+          password: "",
+          phoneNumber: "",
+          address: "",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // useEffect(() => {
+  //   console.log(user);
+  // }, [user]);
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">
@@ -7,11 +57,11 @@ const RegisterPage = () => {
 
       {/* div left and right */}
       <div className="flex flex-col md:flex-row bg-white shadow-md rounded-lg overflow-hidden max-w-4xl w-full">
-        <div class="md:w-1/2">
+        <div className="md:w-1/2">
           <img
             src="/images/placeholder.jpeg"
             alt="Add Staff Image"
-            class="object-cover w-full h-64 md:h-full"
+            className="object-cover w-full h-64 md:h-full"
           />
         </div>
 
@@ -23,81 +73,91 @@ const RegisterPage = () => {
           <form action="" method="post" className="space-y-4">
             <div>
               <label
-                for=""
+                htmlFor="username"
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
                 Username:
               </label>
               <input
                 type="text"
-                name=""
-                id=""
+                name="username"
+                id="username"
                 placeholder="Enter username..."
                 className="border border-gray-300 rounded-sm px-4 py-1 w-full"
+                value={user.username}
+                onChange={fnOnChangeInputValue}
               />
             </div>
 
             <div>
               <label
-                for=""
+                htmlFor="email"
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
                 Email:
               </label>
               <input
                 type="text"
-                name=""
-                id=""
+                name="email"
+                id="email"
                 placeholder="Enter Email..."
                 className="border border-gray-300 rounded-sm px-4 py-1 w-full"
+                value={user.email}
+                onChange={fnOnChangeInputValue}
               />
             </div>
 
             <div>
               <label
-                for=""
+                htmlFor="password"
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
                 Password:
               </label>
               <input
                 type="password"
-                name=""
-                id=""
+                name="password"
+                id="password"
                 placeholder="Enter password..."
                 className="border border-gray-300 rounded-sm px-4 py-1 w-full"
+                value={user.password}
+                onChange={fnOnChangeInputValue}
               />
             </div>
 
             <div>
               <label
-                for=""
+                htmlFor="phoneNumber"
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
                 Phone Number:
               </label>
               <input
                 type="text"
-                name=""
-                id=""
+                name="phoneNumber"
+                id="phoneNumber"
                 placeholder="Enter phone number..."
                 className="border border-gray-300 rounded-sm px-4 py-1 w-full"
+                value={user.phoneNumber}
+                onChange={fnOnChangeInputValue}
               />
             </div>
 
             <div>
               <label
-                for=""
+                htmlFor="address"
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
                 Address:
               </label>
               <input
                 type="text"
-                name=""
-                id=""
+                name="address"
+                id="address"
                 placeholder="Enter address..."
                 className="border border-gray-300 rounded-sm px-4 py-1 w-full"
+                value={user.address}
+                onChange={fnOnChangeInputValue}
               />
             </div>
 

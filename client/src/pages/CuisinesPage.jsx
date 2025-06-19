@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import TableCuisinesRow from "../components/TableCuisinesRow";
+import axios from "axios";
 
 const CuisinesPage = () => {
+  const [cuisines, setCuisines] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+
+    const fetchApi = async () => {
+      const { data } = await axios.get("http://localhost:3000/cuisines", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(data.data);
+      setCuisines(data.data);
+    };
+
+    fetchApi();
+  }, []);
+
   return (
     <section className="min-h-screen flex flex-col md:flex-row bg-gray-100 text-gray-800">
       {/* Sidebar */}
@@ -31,11 +52,13 @@ const CuisinesPage = () => {
             </thead>
 
             <tbody>
-              <TableCuisinesRow />
-              <TableCuisinesRow />
-              <TableCuisinesRow />
-              <TableCuisinesRow />
-              <TableCuisinesRow />
+              {cuisines.map((cuisine, index) => (
+                <TableCuisinesRow
+                  key={cuisine.id}
+                  cuisine={cuisine}
+                  index={index}
+                />
+              ))}
             </tbody>
           </table>
         </div>
