@@ -1,4 +1,4 @@
-const Register = () => {
+const RegisterPage = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">
@@ -26,7 +26,7 @@ const Register = () => {
                 for=""
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
-                Username
+                Username:
               </label>
               <input
                 type="text"
@@ -42,7 +42,7 @@ const Register = () => {
                 for=""
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
-                Email
+                Email:
               </label>
               <input
                 type="text"
@@ -58,7 +58,7 @@ const Register = () => {
                 for=""
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
-                Password
+                Password:
               </label>
               <input
                 type="password"
@@ -74,7 +74,7 @@ const Register = () => {
                 for=""
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
-                Phone Number
+                Phone Number:
               </label>
               <input
                 type="text"
@@ -90,7 +90,7 @@ const Register = () => {
                 for=""
                 className="block text-sm font-medium text-gray-600 mb-1"
               >
-                Address
+                Address:
               </label>
               <input
                 type="text"
@@ -114,4 +114,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;

@@ -1,18 +1,29 @@
-import { useState } from "react";
+import axios from "axios";
+
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-import Login from "./components/Login";
-import Register from "./components/Register";
-import TableCuisines from "./components/TableCuisines";
+import HomePage from "./pages/HomePage";
+import CuisineDetailPage from "./pages/CuisineDetailPage";
+import LoginPage from "./pages/LoginPage";
+import CuisinesPage from "./pages/CuisinesPage";
+import AddCuisinePage from "./pages/AddCuisinePage";
+import EditCuisinePage from "./pages/EditCuisinePage";
+import CategoriesPage from "./pages/CategoriesPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
     <>
-      {/* <Login /> */}
-      {/* <Register /> */}
-      {/* <TableCuisines /> */}
+      {/* <HomePage /> */}
+      {/* <CuisineDetailPage /> */}
+      <LoginPage />
+      {/* <CuisinesPage /> */}
+      {/* <AddCuisinePage /> */}
+      {/* <EditCuisinePage /> */}
+      {/* <CategoriesPage /> */}
+      {/* <RegisterPage /> */}
     </>
   );
 }
