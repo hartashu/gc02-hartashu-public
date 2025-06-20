@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import { useParams } from "react-router";
 
 const CuisineDetailPage = () => {
+  const { id } = useParams();
+
   const [cuisine, setCuisine] = useState({});
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("http://localhost:3000/pub/cuisines/3");
+      const { data } = await axios.get(
+        `http://localhost:3000/pub/cuisines/${id}`
+      );
 
       // console.log(data.data);
       setCuisine(data.data);
@@ -17,10 +22,10 @@ const CuisineDetailPage = () => {
   return (
     <div className="min-h-screen bg-gray-200 p-4">
       {/* Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Cuisine title */}
-      <h1 className="text-2xl font-bold text-center mb-6 underline">
+      <h1 className="text-2xl font-bold text-center mb-6 underline mt-8">
         {cuisine.name}
       </h1>
 

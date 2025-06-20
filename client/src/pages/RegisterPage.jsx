@@ -26,11 +26,12 @@ const RegisterPage = () => {
       const { data } = await axios.post(
         "http://localhost:3000/add-user",
         {
-          username: "",
-          email: "",
-          password: "",
-          phoneNumber: "",
-          address: "",
+          // username: user.username,
+          // email: user.email,
+          // password: user.password,
+          // phoneNumber: user.phoneNumber,
+          // address: user.address,
+          ...user,
         },
         {
           headers: {
@@ -70,7 +71,12 @@ const RegisterPage = () => {
             Add New User Below
           </h2>
 
-          <form action="" method="post" className="space-y-4">
+          <form
+            action=""
+            method="post"
+            className="space-y-4"
+            onSubmit={fnOnSubmitFormRegister}
+          >
             <div>
               <label
                 htmlFor="username"

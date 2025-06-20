@@ -1,7 +1,9 @@
+import { Link } from "react-router";
+
 const Card = ({ cuisine }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg p-4 transition">
-      <a href="" className="cursor-pointer">
+    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg p-4 hover:scale-105 transition  duration-300">
+      <Link to={`/${cuisine.id}`} className="cursor-pointer">
         <img
           src={cuisine.imgUrl}
           alt={cuisine.name}
@@ -12,7 +14,7 @@ const Card = ({ cuisine }) => {
           <p className="font-bold text-xl">Rp. {cuisine.price}</p>
         </div>
         <p className="text-sm text-gray-600">{cuisine.description}</p>
-      </a>
+      </Link>
     </div>
   );
 };

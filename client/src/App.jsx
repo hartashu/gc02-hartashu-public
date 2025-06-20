@@ -19,11 +19,11 @@ function App() {
       {/* <HomePage /> */}
       {/* <CuisineDetailPage /> */}
       {/* <LoginPage /> */}
-      {/* <CuisinesPage /> */}
+      <CuisinesPage />
       {/* <AddCuisinePage /> */}
       {/* <EditCuisinePage /> */}
       {/* <CategoriesPage /> */}
-      <RegisterPage />
+      {/* <RegisterPage /> */}
     </>
   );
 }

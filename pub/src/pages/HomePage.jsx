@@ -24,10 +24,10 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-200 p-4">
       {/* navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* search */}
-      <form className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+      <form className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 mt-8">
         <input
           type="text"
           name=""
@@ -42,7 +42,6 @@ const HomePage = () => {
           Search
         </button>
       </form>
-
       {/* filter & sort */}
       <div className="flex flex-col sm:flex-row sm:justify-end gap-4 mb-6 items-center text-sm">
         <div className="flex items-center gap-2">
@@ -63,18 +62,17 @@ const HomePage = () => {
           </select>
         </div>
       </div>
-
       {/* cuisines grid */}
-      {/* {rawCuisines.length > 0 ? ( */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {console.log(rawCuisines)}
-        {rawCuisines.map((cuisine) => (
-          <Card cuisine={cuisine} />
-        ))}
-      </section>
-      {/* ) : ( */}
-      {/* <p>No data yet</p> */}
-      {/* )} */}
+      {rawCuisines.length > 0 ? (
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {console.log(rawCuisines)}
+          {rawCuisines.map((cuisine) => (
+            <Card cuisine={cuisine} />
+          ))}
+        </section>
+      ) : (
+        <p>No data yet</p>
+      )}
     </div>
   );
 };

@@ -1,10 +1,14 @@
 const LogoutButton = () => {
   return (
-    <>
-      <a href="" className="text-red-500 hover:underline">
-        Logout
-      </a>
-    </>
+    <button
+      href=""
+      className="text-red-500 hover:underline cursor-pointer"
+      onClick={() => {
+        localStorage.removeItem("access_token");
+      }}
+    >
+      Logout
+    </button>
   );
 };
 
