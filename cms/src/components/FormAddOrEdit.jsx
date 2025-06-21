@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import Toastify from "toastify-js";
 import axios from "axios";
+import Button from "./Button";
 
-const FormAddOrEdit = ({ onSubmitForm }) => {
+const FormAddOrEdit = ({ cuisine, onSubmitForm }) => {
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -16,9 +17,11 @@ const FormAddOrEdit = ({ onSubmitForm }) => {
   const [categories, setCategories] = useState([]);
 
   const OnChangeInputValue = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
+    setForm((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
     });
   };
 
@@ -54,6 +57,17 @@ const FormAddOrEdit = ({ onSubmitForm }) => {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    if (cuisine) {
+      setForm((prev) => {
+        return {
+          ...prev,
+          ...cuisine,
+        };
+      });
+    }
+  }, [cuisine]);
+
   return (
     <>
       <form
@@ -87,6 +101,7 @@ const FormAddOrEdit = ({ onSubmitForm }) => {
             name="categoryId"
             id="categoryId"
             className="w-full border border-gray-300 rounded px-3 py-2"
+            value={form.categoryId}
             onChange={OnChangeInputValue}
           >
             {categories?.map((category) => (
@@ -145,12 +160,7 @@ const FormAddOrEdit = ({ onSubmitForm }) => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
-        >
-          Submit
-        </button>
+        <Button buttonName="Submit" />
       </form>
     </>
   );

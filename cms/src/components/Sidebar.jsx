@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import LogoutButton from "./LogoutButton";
+import Button from "./Button";
+import { jwtDecode } from "jwt-decode";
 
 const Sidebar = () => {
   return (
@@ -30,7 +32,7 @@ const Sidebar = () => {
 
         <div className="space-x-4 md:space-y-4 flex flex-row md:block">
           <p className="font-semibold ">Account</p>
-          <p>Hi, Admin</p>
+          <p>Hi, {jwtDecode(localStorage.getItem("access_token")).username}</p>
           <LogoutButton />
         </div>
       </nav>
