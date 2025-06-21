@@ -10,6 +10,12 @@ import Toastify from "toastify-js";
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    loader: () => {
+      return redirect("/login");
+    },
+  },
+  {
     path: "/login",
     loader: () => {
       if (localStorage.access_token) {
