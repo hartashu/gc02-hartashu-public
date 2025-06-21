@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import Toastify from "toastify-js";
 import axios from "axios";
 import Button from "./Button";
+import baseUrl from "../../api/baseUrl";
 
 const FormAddOrEdit = ({ cuisine, onSubmitForm }) => {
   const [form, setForm] = useState({
@@ -27,7 +28,7 @@ const FormAddOrEdit = ({ cuisine, onSubmitForm }) => {
 
   async function fetchCategories() {
     try {
-      const { data } = await axios.get("http://localhost:3000/categories", {
+      const { data } = await axios.get(`${baseUrl}/categories`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
