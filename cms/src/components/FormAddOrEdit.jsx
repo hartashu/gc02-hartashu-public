@@ -1,17 +1,66 @@
-const FormAddOrEdit = ({
-  cuisine,
-  categories,
-  fnOnChangeInputValue,
-  fnOnSubmitFormAddOrEdit,
-  editedCuisine,
-}) => {
+import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
+import Toastify from "toastify-js";
+import axios from "axios";
+
+const FormAddOrEdit = ({ onSubmitForm }) => {
+  const [form, setForm] = useState({
+    name: "",
+    description: "",
+    price: "",
+    imgUrl: "",
+    categoryId: 1,
+    authorId: jwtDecode(localStorage.getItem("access_token")).id,
+  });
+
+  const [categories, setCategories] = useState([]);
+
+  const OnChangeInputValue = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  async function fetchCategories() {
+    try {
+      const { data } = await axios.get("http://localhost:3000/categories", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      });
+
+      // console.log(data.data);
+      setCategories(data?.data);
+    } catch (error) {
+      console.log(error);
+
+      Toastify({
+        text: error.response.data.error.message,
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+      }).showToast();
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   return (
     <>
       <form
         action=""
         method="post"
         className="space-y-4"
-        onSubmit={fnOnSubmitFormAddOrEdit}
+        onSubmit={(e) => onSubmitForm(e, form)}
       >
         {/* name */}
         <div>
@@ -24,11 +73,11 @@ const FormAddOrEdit = ({
             id="name"
             placeholder="Cuisine name"
             className="w-full border border-gray-300 rounded px-3 py-2"
-            value={cuisine.name}
-            onChange={fnOnChangeInputValue}
+            value={form.name}
+            onChange={OnChangeInputValue}
           />
         </div>
-        {/* <!-- authorId auto kirim id yg sedang login??? atau nanti ambilnya dari access_token? --> */}
+
         {/* category */}
         <div>
           <label htmlFor="categoryId" className="block font-medium">
@@ -38,9 +87,9 @@ const FormAddOrEdit = ({
             name="categoryId"
             id="categoryId"
             className="w-full border border-gray-300 rounded px-3 py-2"
-            onChange={fnOnChangeInputValue}
+            onChange={OnChangeInputValue}
           >
-            {categories.map((category) => (
+            {categories?.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option>
@@ -59,8 +108,8 @@ const FormAddOrEdit = ({
             id="description"
             placeholder="Cuisine description"
             className="w-full border border-gray-300 rounded px-3 py-2"
-            value={cuisine.description}
-            onChange={fnOnChangeInputValue}
+            value={form.description}
+            onChange={OnChangeInputValue}
           />
         </div>
 
@@ -75,8 +124,8 @@ const FormAddOrEdit = ({
             id="price"
             placeholder="Cuisine price"
             className="w-full border border-gray-300 rounded px-3 py-2"
-            value={cuisine.price}
-            onChange={fnOnChangeInputValue}
+            value={form.price}
+            onChange={OnChangeInputValue}
           />
         </div>
 
@@ -91,8 +140,8 @@ const FormAddOrEdit = ({
             id="imgUrl"
             placeholder="Image URL"
             className="w-full border border-gray-300 rounded px-3 py-2"
-            value={cuisine.imgUrl}
-            onChange={fnOnChangeInputValue}
+            value={form.imgUrl}
+            onChange={OnChangeInputValue}
           />
         </div>
 

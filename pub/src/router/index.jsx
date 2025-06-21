@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         Component: HomePage,
       },
       {
-        path: ":id",
+        path: "detail/:id",
         Component: CuisineDetailPage,
       },
     ],

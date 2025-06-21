@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import LogoutButton from "./LogoutButton";
 
 const Sidebar = () => {
@@ -5,15 +6,24 @@ const Sidebar = () => {
     <aside className="w-full md:w-64 mb-4 md:mb-0 bg-white p-6 shadow-md flex flex-row md:block">
       <nav className="space-x-4 md:space-y-4">
         <div className="space-x-4 md:space-y-4 flex flex-row md:block">
-          <a className="md:block font-bold text-md text-blue-700 hover:underline">
+          <Link
+            to="/dashboard"
+            className="md:block font-bold text-md text-blue-700 hover:underline"
+          >
             All Cuisines
-          </a>
-          <a className="md:block font-bold text-md text-blue-700 hover:underline">
+          </Link>
+          <Link
+            to="/dashboard/categories"
+            className="md:block font-bold text-md text-blue-700 hover:underline"
+          >
             Categories
-          </a>
-          <a className="md:block font-bold text-md text-blue-700 hover:underline">
+          </Link>
+          <Link
+            to="/add-user"
+            className="md:block font-bold text-md text-blue-700 hover:underline"
+          >
             Add User
-          </a>
+          </Link>
         </div>
 
         <hr className="my-4 md:block" />

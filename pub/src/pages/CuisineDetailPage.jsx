@@ -38,7 +38,12 @@ const CuisineDetailPage = () => {
         />
         <div className="flex justify-between font-semibold mb-2">
           <p>{cuisine.name}</p>
-          <p className="font-bold text-xl">Rp. {cuisine.price}</p>
+          <p className="font-bold text-xl text-orange-700">
+            {cuisine?.price?.toLocaleString("en-US", {
+              style: "currency",
+              currency: "IDR",
+            })}
+          </p>
         </div>
         <p className="text-sm text-gray-600">{cuisine.description}</p>
       </div>

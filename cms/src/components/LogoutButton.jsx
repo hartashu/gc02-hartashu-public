@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router";
+
 const LogoutButton = () => {
+  const navigate = useNavigate();
+
   return (
     <button
-      href=""
       className="text-red-500 hover:underline cursor-pointer"
       onClick={() => {
         localStorage.removeItem("access_token");
+        navigate("/login");
       }}
     >
       Logout
