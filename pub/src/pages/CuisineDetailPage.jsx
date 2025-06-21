@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useParams } from "react-router";
+import baseUrl from "../../api/baseUrl";
 
 const CuisineDetailPage = () => {
   const { id } = useParams();
@@ -10,9 +11,7 @@ const CuisineDetailPage = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(
-        `http://localhost:3000/pub/cuisines/${id}`
-      );
+      const { data } = await axios.get(`${baseUrl}/pub/cuisines/${id}`);
 
       // console.log(data.data);
       setCuisine(data.data);
