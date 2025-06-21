@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router";
 import Toastify from "toastify-js";
+import baseUrl from "../../api/baseUrl";
 
 const TableCuisinesRow = ({ cuisine, index, fetchCuisines }) => {
   const navigate = useNavigate();
@@ -9,14 +10,11 @@ const TableCuisinesRow = ({ cuisine, index, fetchCuisines }) => {
 
   const onClickDeleteButton = async () => {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:3000/cuisines/${cuisine.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const { data } = await axios.delete(`${baseUrl}/cuisines/${cuisine.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       // console.log(data?.message);
 

@@ -83,7 +83,7 @@ const EditCuisinePage = () => {
       formData.append("file", uploadedFile);
 
       const { data } = await axios.patch(
-        `http://localhost:3000/cuisines/${id}`,
+        `${baseUrl}/cuisines/${id}`,
         formData,
         {
           headers: {
@@ -127,7 +127,7 @@ const EditCuisinePage = () => {
 
   async function fetchCuisine() {
     try {
-      const { data } = await axios.get(`http://localhost:3000/cuisines/${id}`, {
+      const { data } = await axios.get(`${baseUrl}/cuisines/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
         },
