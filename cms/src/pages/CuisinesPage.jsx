@@ -4,6 +4,7 @@ import TableCuisinesRow from "../components/TableCuisinesRow";
 import axios from "axios";
 import { Link, useNavigate } from "react-router";
 import Toastify from "toastify-js";
+import baseUrl from "../../api/baseUrl";
 
 const CuisinesPage = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const CuisinesPage = () => {
   // fetch all cuisines
   async function fetchCuisines() {
     try {
-      const { data } = await axios.get("http://localhost:3000/cuisines", {
+      const { data } = await axios.get(`${baseUrl}/cuisines`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
+import baseUrl from "../../api/baseUrl";
 
 const CategoriesPage = () => {
   const token = localStorage.getItem("access_token");
@@ -9,7 +10,7 @@ const CategoriesPage = () => {
 
   useEffect(() => {
     const fetchApi = async () => {
-      const { data } = await axios.get("http://localhost:3000/categories", {
+      const { data } = await axios.get(`${baseUrl}/categories`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

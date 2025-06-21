@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import FormAddOrEdit from "../components/FormAddOrEdit";
 import axios from "axios";
 import Toastify from "toastify-js";
+import baseUrl from "../../api/baseUrl";
 
 const AddCuisinePage = () => {
   const navigate = useNavigate();
@@ -10,15 +11,11 @@ const AddCuisinePage = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:3000/cuisines",
-        form,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        }
-      );
+      const { data } = await axios.post(`${baseUrl}/cuisines`, form, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      });
 
       console.log(data);
 

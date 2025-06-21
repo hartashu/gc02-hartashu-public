@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import FormAddOrEdit from "../components/FormAddOrEdit";
 import Toastify from "toastify-js";
 import Button from "../components/Button";
+import baseUrl from "../../api/baseUrl";
 
 const EditCuisinePage = () => {
   const { id } = useParams();
@@ -15,15 +16,11 @@ const EditCuisinePage = () => {
   async function onSubmitForm(e, form) {
     try {
       e.preventDefault();
-      const { data } = await axios.put(
-        `http://localhost:3000/cuisines/${id}`,
-        form,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        }
-      );
+      const { data } = await axios.put(`${baseUrl}/cuisines/${id}`, form, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      });
       // console.log(data);
 
       Toastify({

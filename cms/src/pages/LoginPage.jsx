@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Toastify from "toastify-js";
+import baseUrl from "../../api/baseUrl";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const LoginPage = () => {
     try {
       event.preventDefault();
       const { data } = await axios.post(
-        "http://localhost:3000/login",
+        `${baseUrl}/login`,
         {
           username: credentials.username,
           password: credentials.password,
