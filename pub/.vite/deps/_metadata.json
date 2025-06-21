@@ -2,7 +2,45 @@
   "hash": "8077171e",
   "configHash": "683577a0",
   "lockfileHash": "98b26336",
-  "browserHash": "7448920c",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "00ca5826",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "6bb31758",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "44a7c289",
+      "needsInterop": true
+    },
+    "react-router": {
+      "src": "../../node_modules/react-router/dist/development/index.mjs",
+      "file": "react-router.js",
+      "fileHash": "228db034",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "54f81958",
+      "needsInterop": false
+    },
+    "toastify-js": {
+      "src": "../../node_modules/toastify-js/src/toastify.js",
+      "file": "toastify-js.js",
+      "fileHash": "7edc1ca6",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-TVFQMRVC": {
+      "file": "chunk-TVFQMRVC.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
 }

@@ -5,7 +5,11 @@ export default function Button({ buttonName }) {
 
   return (
     <>
-      <Link to="" href="" className="hover:underline font-semibold">
+      <Link
+        to="https://gc02-hartashu-public-cms.vercel.app/login"
+        href=""
+        className="hover:underline font-semibold"
+      >
         {buttonName}
       </Link>
     </>
