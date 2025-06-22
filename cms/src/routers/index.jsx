@@ -10,7 +10,7 @@ import Toastify from "toastify-js";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "*",
     loader: () => {
       return redirect("/login");
     },
