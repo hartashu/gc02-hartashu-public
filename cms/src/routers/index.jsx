@@ -37,10 +37,10 @@ const router = createBrowserRouter([
 
       return null;
     },
-    Component: LoginPage,
+    element: <LoginPage />,
   },
   {
-    Component: RootLayout,
+    element: <RootLayout />,
     loader: () => {
       if (!localStorage.getItem("access_token")) {
         return redirect("/login");
@@ -51,19 +51,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        Component: CuisinesPage,
+        element: <CuisinesPage />,
       },
       {
         path: "/dashboard/add",
-        Component: AddCuisinePage,
+        element: <AddCuisinePage />,
       },
       {
         path: "/dashboard/edit/:id",
-        Component: EditCuisinePage,
+        element: <EditCuisinePage />,
       },
       {
         path: "/dashboard/categories",
-        Component: CategoriesPage,
+        element: <CategoriesPage />,
       },
     ],
   },
@@ -76,7 +76,7 @@ const router = createBrowserRouter([
 
       return null;
     },
-    Component: RegisterPage,
+    element: <RegisterPage />,
   },
 ]);
 

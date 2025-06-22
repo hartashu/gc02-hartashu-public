@@ -6,7 +6,7 @@ export default function Button({ buttonName }) {
   return (
     <>
       <Link
-        to="https://gc02-hartashu-public-cms.vercel.app/login"
+        to="https://gc02-hartashu-public-cms.vercel.app"
         href=""
         className="hover:underline font-semibold"
       >
